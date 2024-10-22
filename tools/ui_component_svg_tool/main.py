@@ -20,7 +20,7 @@ def get_svg_for_ui_component(description: str) -> str:
     # Call the GPT-4 API
     response = litellm.completion(
             model="openai/gpt-4o",
-            api_key='sk-2YfBaZ9HM-xfViulI4zJgw',
+            api_key='aaaaa',
             base_url='https://llm-proxy.kubiya.ai',
             messages=[
                 {
