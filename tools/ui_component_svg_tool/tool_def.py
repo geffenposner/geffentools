@@ -32,7 +32,7 @@ python /tmp/main.py "{{ .description }}"
             destination="/tmp/requirements.txt",
             content="""
 requests==2.32.3
-litellm==0.1.10
+litellm==1.50.1
 """,  # Add any requirements here
         ),
     ],
