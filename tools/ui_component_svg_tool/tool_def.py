@@ -5,6 +5,8 @@ import inspect
 
 from kubiya_sdk.tools.models import Tool, Arg, FileSpec
 from kubiya_sdk.tools.registry import tool_registry
+from .common import COMMON_SECRET_VARIABLES
+
 
 ui_component_svg_tool = Tool(
     name="create_ui_component_svg",
@@ -32,10 +34,11 @@ python /tmp/main.py "{{ .description }}"
             destination="/tmp/requirements.txt",
             content="""
 requests==2.32.3
-litellm==1.50.1
+litellm==1.49.5
 """,  # Add any requirements here
         ),
     ],
+    secrets=COMMON_SECRET_VARIABLES,
 )
 
 tool_registry.register("ui_component_svg", ui_component_svg_tool)

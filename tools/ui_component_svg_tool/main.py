@@ -1,10 +1,11 @@
-#import os
+import os
 #import requests
 #import argparse
 import litellm
 
 from datetime import datetime
 
+openai_api_key = os.environ['OPEN_AI_API_KEY_1']
 
 def get_svg_for_ui_component(description: str) -> str:
     """
@@ -20,7 +21,7 @@ def get_svg_for_ui_component(description: str) -> str:
     # Call the GPT-4 API
     response = litellm.completion(
             model="openai/gpt-4o",
-            api_key='aaaaa',
+            api_key=openai_api_key,
             base_url='https://llm-proxy.kubiya.ai',
             messages=[
                 {
