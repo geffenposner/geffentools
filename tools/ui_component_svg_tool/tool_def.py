@@ -32,10 +32,7 @@ python /tmp/main.py "{{ .description }}"
         ),
         FileSpec(
             destination="/tmp/requirements.txt",
-            source="""
-requests==2.32.3
-litellm==1.49.5
-""",  # Add any requirements here
+            content="requests==2.32.3\nlitellm==1.49.5",  # Add any requirements here
         ),
     ],
     secrets=COMMON_SECRET_VARIABLES,
