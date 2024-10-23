@@ -32,7 +32,7 @@ python /tmp/main.py "{{ .description }}"
         ),
         FileSpec(
             destination="/tmp/requirements.txt",
-            content="""
+            source="""
 requests==2.32.3
 litellm==1.49.5
 """,  # Add any requirements here
