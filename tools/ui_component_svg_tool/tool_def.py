@@ -28,7 +28,7 @@ python /tmp/main.py "{{ .description }}"
     with_files=[
         FileSpec(
             destination="/tmp/main.py",
-            source=inspect.getsource(main),
+            content=inspect.getsource(main),
         ),
         FileSpec(
             destination="/tmp/requirements.txt",
