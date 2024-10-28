@@ -1,3 +1,4 @@
+import argparse
 import os
 from datetime import datetime
 #import requests
@@ -83,7 +84,13 @@ def send_slack_file_to_thread(token, channel_id, thread_ts, file_path, initial_c
 
 # Example usage
 if __name__ == "__main__":
-    description = "simple button with rounded corners and a gradient background"
+    parser = argparse.ArgumentParser(description="description of the svg componenet to generate")
+    parser.add_argument("description", help="Description of the svg componenet to generate")
+    # Parse command-line arguments
+    args = parser.parse_args()
+
+    # Get coordinates for the given city
+    description = args.description
 
     try:
         token = os.environ['SLACK_API_TOKEN']
