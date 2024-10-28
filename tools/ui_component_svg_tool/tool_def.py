@@ -32,7 +32,7 @@ python /tmp/main.py "{{ .description }}"
         ),
         FileSpec(
             destination="/tmp/requirements.txt",
-            content="requests==2.32.3\nlitellm==1.49.5",  # Add any requirements here
+            content="requests==2.32.3\nlitellm==1.49.5\nslack_sdk==3.33.2",  # Add any requirements here
         ),
     ],
     env=[
