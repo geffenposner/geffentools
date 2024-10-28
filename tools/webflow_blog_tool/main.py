@@ -5,7 +5,7 @@ import litellm
 
 from datetime import datetime
 
-
+openai_api_key = os.environ['OPEN_AI_API_KEY_1']
 
 def get_svg_for_ui_component(description: str) -> str:
     """
@@ -17,12 +17,6 @@ def get_svg_for_ui_component(description: str) -> str:
     :return: SVG code as a string.
     """
     prompt = f"Create an SVG representation of the following UI component: {description}. Return only the SVG code and nothing else."
-
-
-    openai_api_key = os.environ['OPEN_AI_API_KEY_1']
-    if not openai_api_key:
-        print("OPEN_AI_API_KEY_1 environment variable is not set.")
-        return
 
     # Call the GPT-4 API
     response = litellm.completion(
@@ -98,18 +92,14 @@ def save_svg_file(svg_code):
 # Example usage
 if __name__ == "__main__":
     description = "simple button with rounded corners and a gradient background"
+    api_key = "your-openai-api-key"  # Replace with your actual OpenAI API key
 
     # Retrieve the SVG code
     try:
-        svg_code = get_svg_for_ui_component(description)
+        svg_code = get_svg_for_ui_component(description, api_key)
         print(svg_code)
-
-        if not svg_code:
-            print("No SVG code returned from GPT-4")
-        
-        else:
-            # Call the function with the SVG code
-            save_svg_file(svg_code)
+        # Call the function with the SVG code
+        save_svg_file(svg_code)
     except Exception as e:
         print(f"Error: {e}")
 
