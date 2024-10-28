@@ -104,7 +104,7 @@ if __name__ == "__main__":
             # Call the function with the SVG code
             file_path = save_svg_file(svg_code)
             comment = "Here is the SVG code for the UI component"
-            send_slack_file_to_thread(token, channel_id, thread_ts, file_path.resolve(), comment)
+            send_slack_file_to_thread(token, channel_id, thread_ts, str(file_path.resolve()), comment)
     except Exception as e:
         print(f"Error: {e}")
 
