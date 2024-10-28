@@ -19,7 +19,7 @@ def get_svg_for_ui_component(description: str) -> str:
     :param api_key: OpenAI API key for authentication.
     :return: SVG code as a string.
     """
-    prompt = f"Create an SVG representation of the following UI component: {description}. Return only the SVG code and nothing else."
+    prompt = f"Create an SVG representation of the following UI component: {description}. Return only the SVG code and nothing else, do not wrap it in any other text – not even ```svg. Because a script will automatically save your response in a file, so the response should only be the content of the svg file itself. IT MUST BE A VALID SVG FILE."
 
 
     openai_api_key = os.environ['OPEN_AI_API_KEY_1']
@@ -96,6 +96,7 @@ if __name__ == "__main__":
     try:
         svg_code = get_svg_for_ui_component(description)
         print(svg_code)
+        print()
 
         if not svg_code:
             print("No SVG code returned from GPT-4")
