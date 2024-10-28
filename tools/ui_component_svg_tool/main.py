@@ -4,6 +4,7 @@ from datetime import datetime
 #import argparse
 import litellm
 
+from pathlib import Path
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
@@ -44,7 +45,7 @@ def get_svg_for_ui_component(description: str) -> str:
     return svg_code
 
 
-def save_svg_file(svg_code):
+def save_svg_file(svg_code) -> Path:
     """
     Saves the provided SVG code to a .svg file with a timestamped file name.
     
@@ -54,9 +55,8 @@ def save_svg_file(svg_code):
     timestamp = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
     file_name = f"{timestamp}.svg"
     
-    # Write the SVG code to the file
-    with open(file_name, "w") as file:
-        file.write(svg_code)
+    file_path = Path(file_name)
+    file_path.write_text(svg_code)
     print(f"SVG file saved as {file_name}")
     return file_path
 
@@ -72,7 +72,7 @@ def send_slack_file_to_thread(token, channel_id, thread_ts, file_path, initial_c
             channel=channel_id,
             file=file_path,
             initial_comment=initial_comment,
-            thread_ts=None
+            thread_ts=thread_ts,
         )
         print(f"File uploaded to Slack thread: {response}")
         return response
@@ -104,7 +104,7 @@ if __name__ == "__main__":
             # Call the function with the SVG code
             file_path = save_svg_file(svg_code)
             comment = "Here is the SVG code for the UI component"
-            send_slack_file_to_thread(token, channel_id, thread_ts, file_path, comment)
+            send_slack_file_to_thread(token, channel_id, thread_ts, file_path.resolve(), comment)
     except Exception as e:
         print(f"Error: {e}")
 
