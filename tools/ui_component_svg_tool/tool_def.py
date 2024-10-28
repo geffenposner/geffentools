@@ -35,7 +35,14 @@ python /tmp/main.py "{{ .description }}"
             content="requests==2.32.3\nlitellm==1.49.5",  # Add any requirements here
         ),
     ],
-    secrets=COMMON_SECRET_VARIABLES,
+    env=[
+        "SLACK_THREAD_TS",
+        "SLACK_CHANNEL_ID",
+    ],
+    secrets=[
+        "SLACK_API_TOKEN",
+        "OPEN_AI_API_KEY_1",
+    ],
 )
 
 tool_registry.register("ui_component_svg", ui_component_svg_tool)
