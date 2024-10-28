@@ -12,7 +12,7 @@ ui_component_svg_tool = Tool(
     name="create_ui_component_svg",
     type="docker",
     image="python:3.12",
-    description="Creates a UI component based on {description} in svg format",
+    description="Creates a UI component based on {description} in svg format ",
     args=[Arg(name="description", description="description of the UI component you want created", required=True)],
     content="""
 curl -LsSf https://astral.sh/uv/install.sh | sh > /dev/null 2>&1

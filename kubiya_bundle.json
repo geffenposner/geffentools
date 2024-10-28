@@ -120,7 +120,7 @@
       "name": "create_ui_component_svg",
       "source": null,
       "alias": null,
-      "description": "Creates a UI component based on {description} in svg format",
+      "description": "Creates a UI component based on {description} in svg format ",
       "type": "docker",
       "content": "\ncurl -LsSf https://astral.sh/uv/install.sh | sh > /dev/null 2>&1\n. $HOME/.cargo/env\n\nuv venv > /dev/null 2>&1\n. .venv/bin/activate > /dev/null 2>&1\n\nuv pip install -r /tmp/requirements.txt > /dev/null 2>&1\n\npython /tmp/main.py \"{{ .description }}\"\n",
       "content_url": null,
@@ -155,7 +155,7 @@
         {
           "source": null,
           "destination": "/tmp/requirements.txt",
-          "content": "requests==2.32.3\nlitellm==1.49.5"
+          "content": "requests==2.32.3\nlitellm==1.49.5\nslack_sdk==3.33.2"
         }
       ],
       "with_services": [],
